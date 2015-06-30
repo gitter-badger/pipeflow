@@ -1,0 +1,22 @@
+{
+  "name": "indira",
+  "version": "0.0.1",
+  "description": "Indira is a lightweight web platform that written in JavaScript and helps developers and startups to focus on their business",
+  "main": "src/indira.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "gulp test"
+  },
+  "author": "Mehdi Golchin",
+  "license": "MIT",
+  "dependencies": {},
+  "devDependencies": {
+    "chai": "^3.0.0",
+    "gulp": "^3.9.0",
+    "gulp-mocha": "^2.1.2",
+    "karma": "^0.12.37",
+    "mocha": "^2.2.5"
+  }
+}
