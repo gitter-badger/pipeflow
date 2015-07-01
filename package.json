@@ -1,16 +1,18 @@
 {
-  "name": "indira",
+  "name": "PipeJS",
   "version": "0.0.1",
-  "description": "Indira is a lightweight web platform that written in JavaScript and helps developers and startups to focus on their business",
-  "main": "src/indira.js",
-  "directories": {
-    "test": "test"
-  },
+  "description": "Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript",
+  "main": "src/pipe.js",
+  "directories": {},
   "scripts": {
     "test": "gulp test"
   },
   "author": "Mehdi Golchin",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pipe-js/Pipe.git"
+  },
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.0.0",
