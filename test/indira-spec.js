@@ -1,6 +1,4 @@
 
-/// <reference path="../typings/references.d.ts" />
-
 var indira = require('./../src/indira'),
 	expect = require('chai').expect;
 
@@ -24,7 +22,7 @@ describe('indira specs', function () {
 
 	});
 
-	describe('run', function () {
+	describe('start', function () {
 
 		it('should invoke middleware', function (done) {
 			// arrange			
