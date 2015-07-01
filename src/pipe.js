@@ -1,10 +1,9 @@
 
 !function () {
 	
-	function Indira() {
+	function PipeJS() {
 
-		var started = false,
-			middlewares = [],
+		var middlewares = [],
 			self = this;
 
 		function pipe(middleware) {
@@ -52,11 +51,11 @@
 	var root = this;
 	
 	if (typeof module != 'undefined' && module.exports) {
-		module.exports = Indira;
-		Indira.isNode = true;
+		module.exports = PipeJS;
+		PipeJS.isNode = true;
 	} else {
-		root.Indira = Indira;
-		Indira.isNode = false;
+		root.PipeJS = PipeJS;
+		PipeJS.isNode = false;
 	}
 
 } ();

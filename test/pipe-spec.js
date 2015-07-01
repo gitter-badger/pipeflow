@@ -1,15 +1,15 @@
 
-var indira = require('./../src/indira'),
+var PipeJS = require('./../src/pipe'),
 	expect = require('chai').expect;
 
-describe('indira specs', function () {
+describe('PipeJS specs', function () {
 
 
 	describe('pipe', function () {
 
 		it('should throw error when supplied middleware is not a function', function () {
 			// arrange
-			var app = indira();
+			var app = PipeJS();
 			
 			// act
 			var code = function () {
@@ -26,7 +26,7 @@ describe('indira specs', function () {
 
 		it('should invoke middleware', function () {
 			// arrange			
-			var app = indira(),
+			var app = PipeJS(),
 				context = { name: 'mehdi' };
 
 			app.pipe(function (next, context) {
@@ -52,7 +52,7 @@ describe('indira specs', function () {
 				};
 			}
 						
-			var app = indira();
+			var app = PipeJS();
 
 			app
 			.pipe(message('start'))
