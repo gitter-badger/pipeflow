@@ -24,9 +24,10 @@ describe('indira specs', function () {
 
 	describe('start', function () {
 
-		it('should invoke middleware', function (done) {
+		it('should invoke middleware', function () {
 			// arrange			
-			var app = indira();
+			var app = indira(),
+				context = { name: 'mehdi' };
 
 			app.pipe(function (next, context) {
 				context.message = 'hello ' + context.name;
@@ -34,17 +35,16 @@ describe('indira specs', function () {
 			});
 			
 			// act
-			app.start({ name: 'mehdi' }, complete);
+			app.start(context);
 			
 			// assert
-			function complete(context) {
-				expect(context.message).to.equal('hello mehdi');
-				done();
-			}
+			expect(context.message).to.equal('hello mehdi');
 		});
 
-		it('should invoke tree middlewares', function (done) {
+		it('should invoke tree middlewares', function () {
 			// arrange
+			var context = { output: '' };
+			
 			function message(msg) {
 				return function (next, context) {
 					context.output += (msg + '\n');
@@ -60,27 +60,10 @@ describe('indira specs', function () {
 			.pipe(message('end'));
 			
 			// act
-			app.start({ output: '' }, complete);	
+			app.start(context);	
 			
 			// arrange
-			function complete(context) {
-				expect(context.output).to.equal('start\nprocess\nend\n');
-				done();
-			}
-		});
-		
-		it('should not throw error when callback parameter is nil', function () {
-			// arrange
-			var app = indira();
-			app.pipe(function (next, context) {
-				next(context);
-			});
-			
-			// act
-			function fn() { app.start(); }
-			
-			// assert
-			expect(fn).to.not.throw(Error);
+			expect(context.output).to.equal('start\nprocess\nend\n');
 		});
 
 	});

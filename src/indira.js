@@ -1,8 +1,6 @@
 
 !function () {
 	
-	var emptyfn = function () { };
-	
 	function Indira() {
 
 		var started = false,
@@ -34,19 +32,12 @@
 			return this;
 		}
 
-		function start(context, complete) {
-			var _first = middlewares[0],
-				_complete = complete || emptyfn;
+		function start(context) {
+			var _first = middlewares[0];
 			
-			if (!started) {
-				pipe(function (n, c) { _complete(c); });
-			}
-				
 			if (_first) {
 				return _first(context);
 			}
-			
-			started = true;
 		}
 		
 		// expose main functionallity
