@@ -15,26 +15,30 @@ npm test
 
 ### Example
 Since Pipe.js currently is not available on the npm repository, you have to clone Pipe.js and its server middleware manually from github to run following code snippet.
+
+**api-route.js**
+```javascript
+module.exports = function api(routes) {
+
+  routes.get('/hello', function (req, res) {
+    res.end('hello world!');
+  });
+  
+};
+```
+**app.js**
 ```javascript
 var PipeJS = require('./pipe/src/pipe.js'),
-    http = require('./pipe-server/src/pipe-server.js');
+    http = require('./pipe-server/src/pipe-server.js')
+    api = require('./api-route');
 
 var app = PipeJS();
-			
+
 app
 .pipe(http.server({port: 2020}))
-.pipe(function (next, context) {
-  // serve hello world!
-  if (context.request.url == '/hello') {
-    context.response.end('hello world!');
-  }
-  next(context);
-})
-.pipe(close);
+.pipe(http.router(api));
 			
 app.start();
-			
-get('/hello', function recieved(content) {
-  console.log(content);
-});
 ```
+
+Then open your favorite browser and type http://localhost:2020/hello
