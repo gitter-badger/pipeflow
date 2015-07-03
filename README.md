@@ -4,17 +4,25 @@
 Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript.
 
 ### Setup
+To clone and setup Pipe.js on your computer use
 ```
-npm install
+$ mkdir pipejs
+$ cd pipejs
+$ git clone https://github.com/Pipe-js/Pipe.git
+$ npm install
+```
+Or if you already cloned the repository just use
+```
+$ npm install
 ```
 
 ### Test
 ```
-npm test
+$ npm test
 ```
 
 ### Example
-Since Pipe.js currently is not available on the npm repository, you have to clone Pipe.js and its server middleware manually from github to run following code snippet.
+Since Pipe.js currently is not available on the npm repository, you have to clone Pipe.js and its [server middleware](https://github.com/Pipe-js/Pipe-server) manually from github to run following code snippet.
 
 **api-route.js**
 ```javascript
