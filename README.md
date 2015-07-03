@@ -1,4 +1,4 @@
-**Note** This project is under development and unsuitable for production.
+**Note** Pipe.js is under development since it's unsuitable for production.
 
 # Pipe.js
 Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript.
