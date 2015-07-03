@@ -5,7 +5,7 @@
   "main": "src/pipe.js",
   "directories": {},
   "scripts": {
-    "test": "gulp test"
+    "test": "mocha"
   },
   "author": "Mehdi Golchin",
   "license": "MIT",
