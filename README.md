@@ -1,22 +1,23 @@
-**Note** Pipe.js is under development since it's unsuitable for production.
+**Note** This is just a prototype and we're not ready for production yet.
 
 # Pipe.js
-Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript.
+Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript. It allows you to write and run everything from building phase tasks to handling http request, implementing restful web APIs and Single-Page Application (SPA) on same pipeline and API.
 
 ### Setup
-To clone and setup Pipe.js on your computer use
+To clone and setup Pipe.js on your computer use following instruction.
 ```
 $ mkdir pipejs
 $ cd pipejs
 $ git clone https://github.com/Pipe-js/Pipe.git
 $ npm install
 ```
-Or if you already cloned the repository just use
+Or if you already cloned the repository just install required packages using node.js package manager.
 ```
 $ npm install
 ```
 
 ### Test
+To run Pipe.js unit tests run following command.
 ```
 $ npm test
 ```
