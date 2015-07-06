@@ -1,5 +1,6 @@
-[![Stories in Ready](https://badge.waffle.io/Pipe-js/pipe.png?label=ready&title=Ready)](https://waffle.io/Pipe-js/pipe)
 **Note** This is just a prototype and we're not ready for production yet.
+
+[![Stories in Ready](https://badge.waffle.io/Pipe-js/pipe.png?label=ready&title=Ready)](https://waffle.io/Pipe-js/pipe)
 
 # Pipe.js
 Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript. It allows you to write and run everything from building phase tasks to handling http request, implementing restful web APIs and Single-Page Application (SPA) on same pipeline and API.
