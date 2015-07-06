@@ -1,6 +1,6 @@
 {
   "name": "Pipe",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript",
   "main": "src/pipe.js",
   "directories": {
@@ -9,8 +9,7 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.0.0",
-    "mocha": "^2.2.5",
-    "mocha-appveyor-reporter": "^0.1.0"
+    "mocha": "^2.2.5"
   },
   "scripts": {
     "test": "mocha"
