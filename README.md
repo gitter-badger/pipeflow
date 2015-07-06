@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/Pipe-js/pipe.png?label=ready&title=Ready)](https://waffle.io/Pipe-js/pipe)
 **Note** This is just a prototype and we're not ready for production yet.
 
 # Pipe.js
