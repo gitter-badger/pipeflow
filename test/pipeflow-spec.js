@@ -11,7 +11,7 @@ describe('Pipeflow test', function () {
 
       // act
       var code = function () {
-        app.pipe('');
+        app.pipe(null);
       };
 
       //assert			
@@ -22,48 +22,91 @@ describe('Pipeflow test', function () {
 
   describe('start', function () {
 
-    it('should invoke middleware', function (done) {
+    it('should pipe empty stream to first middleware', function () {
+      // arrange
+      var app = Pipeflow();
+      var actual = null;
+
+      app.pipe(function (next, stream) { actual = stream });
+      
+      // act
+      app.start();
+      
+      // assert
+      expect(actual.type).to.equal('State');
+      expect(actual.read()).to.equal(null);
+      expect(actual.isEmpty).to.be.true;
+    });
+
+    it('should pipe the stream to first middleware', function () {
       // arrange			
+      var app = Pipeflow();
+      var actual = null
+
+      app.pipe(function (next, stream) { actual = stream; });
+
+      // act
+      app.start('hello!');
+
+      // assert
+      expect(actual.type).to.equal('State');
+      expect(actual.read()).to.equal('hello!');
+      expect(actual.isEmpty).to.be.false;
+    });
+
+    it('should pipe the result stream to next middleware', function (done) {
+      // arrange
       var app = Pipeflow();
 
       app
-        .pipe(function (next, name) {
-          next('hello ' + name);
+        .pipe(function (next, stream) {
+          next('hello world!');
         })
         .pipe(assert);
-
+        
       // act
-      app.start('mehdi');
-
+      app.start();
+      
       // assert
-      function assert(next, message) {
-        expect(message).to.equal('hello mehdi');
+      function assert(next, stream) {
+        expect(stream.type).to.equal('State');
+        expect(stream.read()).to.equal('hello world!');
         done();
       }
     });
 
-    it('should invoke tree middlewares', function (done) {
+    it('should not wrap the stream again', function () {
       // arrange
-      function message(msg) {
-        return function (next, state) {
-          next((state ? state + ' - ' : '') + msg);
-        };
-      }
-
       var app = Pipeflow();
+      var expected = { type: 'Fake', read: function () { } };
+      var actual = null;
+
+      app.pipe(function (next, stream) { actual = stream; });
+      
+      // act
+      app.start(expected);
+      
+      // assert
+      expect(actual).to.equal(expected);
+    });
+
+    it('should not wrap the result stream again', function (done) {
+      // arrange
+      var app = Pipeflow();
+      var expected = { type: 'Fake', read: function () { } };
 
       app
-        .pipe(message('start'))
-        .pipe(message('process'))
-        .pipe(message('end'))
+        .pipe(function (next, stream) {
+          next(expected);
+        })
         .pipe(assert);
-
+      
       // act
       app.start();
-
-      // arrange
-      function assert(next, message) {
-        expect(message).to.equal('start - process - end');
+      
+      // assert
+      function assert(next, actual) {
+        expect(actual).to.equal(expected);
         done();
       }
     });
