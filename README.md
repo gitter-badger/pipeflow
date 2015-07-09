@@ -1,4 +1,4 @@
-**Note** Cuase Pipeflow is under development, it's not ready for production purpose yet.
+**Note** Since Pipeflow is under development, it's not ready for production purpose yet.
 
 # Pipeflow
 Pipeflow is a lightweight and cross-platform pipeline library written in JavaScript.
