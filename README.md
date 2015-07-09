@@ -6,9 +6,9 @@ Pipeflow is a lightweight and cross-platform pipeline library written in JavaScr
 ### Cloning
 To clone Pipeflow from this repository to your computer use following instruction:
 ```
-$ mkdir pipejs
-$ cd pipejs
-$ git clone https://github.com/Pipe-js/Pipe.git
+$ mkdir pipeflow
+$ cd pipeflow
+$ git clone https://github.com/Pipeflow/pipeflow
 $ npm install
 ```
 or if you already cloned the repository just run following command to install required packages using node.js package manager.
