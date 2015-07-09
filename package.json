@@ -1,7 +1,7 @@
 {
-  "name": "Pipe",
+  "name": "Pipeflow",
   "version": "0.1.0",
-  "description": "Pipe.js is a lightweight and cross-platform pipeline library written in JavaScript",
+  "description": "A lightweight pipeline library written for node and browsers.",
   "main": "src/pipe.js",
   "directories": {
     "test": "test"
