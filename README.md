@@ -11,7 +11,7 @@ $ cd pipejs
 $ git clone https://github.com/Pipe-js/Pipe.git
 $ npm install
 ```
-Or if you already cloned the repository just run following command to install required packages using node.js package manager.
+or if you already cloned the repository just run following command to install required packages using node.js package manager.
 ```
 $ npm install
 ```
