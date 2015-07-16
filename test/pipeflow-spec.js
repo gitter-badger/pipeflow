@@ -1,5 +1,10 @@
-var Pipeflow = require('../src/pipeflow'),
-  expect = require('chai').expect;
+var Pipeflow = require('../src/pipeflow').Pipeflow,
+    Stream = require('../src/pipeflow').Stream,
+    chai = require('chai'),
+    expect = chai.expect,
+    spies = require('chai-spies');
+
+chai.use(spies);
 
 describe('Pipeflow test', function () {
 
@@ -14,7 +19,7 @@ describe('Pipeflow test', function () {
         app.pipe(null);
       };
 
-      //assert			
+      //assert
       expect(code).to.throw('Supplied value is not a function.');
     });
 
@@ -22,93 +27,54 @@ describe('Pipeflow test', function () {
 
   describe('start', function () {
 
-    it('should pipe empty stream to first middleware', function () {
+    it('should invoke the first middleware', function () {
       // arrange
       var app = Pipeflow();
-      var actual = null;
+      var spy = chai.spy();
 
-      app.pipe(function (next, stream) { actual = stream });
-      
+      app.pipe(spy);
+
       // act
       app.start();
-      
-      // assert
-      expect(actual.type).to.equal('State');
-      expect(actual.read()).to.equal(null);
-      expect(actual.isEmpty).to.be.true;
-    });
-
-    it('should pipe the stream to first middleware', function () {
-      // arrange			
-      var app = Pipeflow();
-      var actual = null
-
-      app.pipe(function (next, stream) { actual = stream; });
-
-      // act
-      app.start('hello!');
 
       // assert
-      expect(actual.type).to.equal('State');
-      expect(actual.read()).to.equal('hello!');
-      expect(actual.isEmpty).to.be.false;
+      expect(spy).to.have.been.called();
     });
 
-    it('should pipe the result stream to next middleware', function (done) {
+    it('should pump the stream to next middleware', function () {
       // arrange
+      var stream = Stream.define('hello');
+      
       var app = Pipeflow();
+      var spy = chai.spy();
 
       app
-        .pipe(function (next, stream) {
-          next('hello world!');
-        })
-        .pipe(assert);
-        
+        .pipe(function (stream) { this.pump(stream); })
+        .pipe(spy);
+
       // act
-      app.start();
-      
+      app.start(stream);
+
       // assert
-      function assert(next, stream) {
-        expect(stream.type).to.equal('State');
-        expect(stream.read()).to.equal('hello world!');
-        done();
-      }
+      expect(spy).to.have.been.called.with(stream);
     });
 
-    it('should not wrap the stream again', function () {
-      // arrange
-      var app = Pipeflow();
-      var expected = { type: 'Fake', read: function () { } };
-      var actual = null;
+  });
 
-      app.pipe(function (next, stream) { actual = stream; });
+  describe('stream', function () {
+
+    it('should define a brand new stream and instantiate it', function () {
+      // arrange
+      var stream = Stream.define('hello');
+      stream.read = function () {
+        return 'hello world!';
+      };
       
       // act
-      app.start(expected);
+      var stream = Stream.new('hello');
       
       // assert
-      expect(actual).to.equal(expected);
-    });
-
-    it('should not wrap the result stream again', function (done) {
-      // arrange
-      var app = Pipeflow();
-      var expected = { type: 'Fake', read: function () { } };
-
-      app
-        .pipe(function (next, stream) {
-          next(expected);
-        })
-        .pipe(assert);
-      
-      // act
-      app.start();
-      
-      // assert
-      function assert(next, actual) {
-        expect(actual).to.equal(expected);
-        done();
-      }
+      expect(stream.read()).to.equal('hello world!');
     });
 
   });

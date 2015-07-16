@@ -1,73 +1,95 @@
-! function() {
+! function () {
+
+  var streams = {};
+
+  // Stream
+  var Stream = {
+    // creates a new instance of stream
+    new: function (name) {
+      return Object.create(streams[name]);
+    },
+    // defines a new stream
+    define: function (name) {
+      return streams[name] = Object.create(Stream);
+    }
+  };
   
-    function Stream(stream) {
-      if (stream && typeof stream.type === 'string' && typeof stream.read === 'function') {
-        return stream;
+  // Scope
+  var Scope = {
+    // creates a new instance of scope
+    new: function () {
+      return Object.create(Scope);
+    },
+    // initializes a new instance of Scope
+    init: function (middleware) {
+      this.middleware = middleware;
+      return this;
+    },
+    // invokes the middleware
+    invoke: function (stream) {
+      this.middleware.call(this, stream);
+    },
+    // pumps supplied stream to next middleware
+    pump: function (stream) {
+      // get the next middleware
+      var next = this.middleware.next;
+      if (next) {
+        // create a new scope and invoke the next middleware
+        Scope.new().init(next).invoke(stream);
       }
-      
-      return {
-        type: 'State',
-        read: function() {
-          return stream || null;  
-        },
-        isEmpty: !!!stream
-      };
+    }
+  };
+
+  // Pipeflow
+  function Pipeflow() {
+
+    var first, last;
+
+    // pipes stream to supplied middleware
+    function pipe(middleware) {
+      if (typeof middleware !== 'function') {
+        throw new Error('Supplied value is not a function.');
+      }
+      // store the first middleware
+      if (!first) {
+        first = middleware;
+      }
+      // chain the middlewares
+      if (last) {
+        last.next = middleware;
+        middleware.previous = last;
+      }
+      // store the last middleware
+      last = middleware;
+      return this;
     }
 
-    function Pipeflow() {
-
-        var middlewares = [],
-            self = this;
-
-        function pipe(middleware) {
-            // is it a valid middleware
-            if (typeof middleware !== 'function') {
-                throw new Error('Supplied value is not a function.');
-            }
-
-            var len = middlewares.length;
-
-            // invoke next middleware
-            var next = function(stream) {
-                var fn = middlewares[len + 1];
-                if (fn) {
-                    fn(Stream(stream));
-                }
-            };
-
-            var wrapper = function(stream) {
-                return middleware.call(self, next, stream);
-            };
-
-            middlewares.push(wrapper);
-
-            return this;
-        }
-
-        function start(stream) {
-            var _first = middlewares[0];
-
-            if (_first) {
-                return _first(Stream(stream));
-            }
-        }
-
-        // expose main functionallity
-        return {
-            pipe: pipe,
-            start: start
-        };
-
+    // starts the cycle
+    function start(stream) {
+      if (!first) {
+        return;
+      }
+      // create a new scope and invoke the first middleware
+      Scope.new().init(first).invoke(stream);
     }
 
-    // export module
-    var root = this;
+    return {
+      pipe: pipe,
+      start: start
+    };
 
-    if (typeof module != 'undefined' && module.exports) {
-        module.exports = Pipeflow;
-        Pipeflow.isNode = true;
-    } else {
-        root.Pipeflow = Pipeflow;
-    }
+  }
 
-}();
+  // export module
+  var root = this;
+
+  if (typeof module != 'undefined' && module.exports) {
+    Pipeflow.isNode = true;
+    exports.Pipeflow = Pipeflow;
+    exports.Stream = Stream;
+  } else {
+    root.Pipeflow = Pipeflow;
+    root.Stream = Stream;
+  }
+
+} ();
