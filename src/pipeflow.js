@@ -39,6 +39,7 @@
         // create a new scope and invoke the next middleware
         Scope.new().init(next, stream).invoke();
       }
+      return stream;
     }
   };
 
@@ -71,23 +72,8 @@
       if (!first) {
         return;
       }
-      // pipe flush middleware
-      this.pipe(flush);
       // create a new scope and invoke the first middleware
       Scope.new().init(first, stream).invoke();
-    }
-    
-    // flush middleware
-    function flush(stream) {
-      var _stream = stream;
-      while (_stream) {
-        // flush the stream
-        if (_stream.flush) {
-          _stream.flush();
-        }
-        // move to origin
-        _stream = _stream.origin;
-      }
     }
 
     return {
