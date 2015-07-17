@@ -58,6 +58,28 @@ describe('Pipeflow test', function () {
       // assert
       expect(spy).to.have.been.called.with(stream);
     });
+    
+    it('should flush the stream at the end', function () {
+      // arrange
+      var stream1 = Stream.define('stream1');
+      stream1.flush = chai.spy();
+          
+      var stream2 = Stream.define('stream2');
+      stream2.flush = chai.spy();
+          
+      var app = Pipeflow();
+      
+      app
+        .pipe(function (stream) { this.pump(stream1); })
+        .pipe(function (stream) { this.pump(stream2); });
+      
+      // act
+      app.start();
+      
+      // assert
+      expect(stream1.flush).to.have.been.called();
+      expect(stream2.flush).to.have.been.called();
+    });
 
   });
 

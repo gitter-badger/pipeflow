@@ -21,21 +21,23 @@
       return Object.create(Scope);
     },
     // initializes a new instance of Scope
-    init: function (middleware) {
+    init: function (middleware, stream) {
       this.middleware = middleware;
+      this.stream = stream;
       return this;
     },
     // invokes the middleware
-    invoke: function (stream) {
-      this.middleware.call(this, stream);
+    invoke: function () {
+      this.middleware.call(this, this.stream);
     },
     // pumps supplied stream to next middleware
     pump: function (stream) {
       // get the next middleware
+      stream.origin = this.stream;
       var next = this.middleware.next;
       if (next) {
         // create a new scope and invoke the next middleware
-        Scope.new().init(next).invoke(stream);
+        Scope.new().init(next, stream).invoke();
       }
     }
   };
@@ -69,8 +71,23 @@
       if (!first) {
         return;
       }
+      // pipe flush middleware
+      this.pipe(flush);
       // create a new scope and invoke the first middleware
-      Scope.new().init(first).invoke(stream);
+      Scope.new().init(first, stream).invoke();
+    }
+    
+    // flush middleware
+    function flush(stream) {
+      var _stream = stream;
+      while (_stream) {
+        // flush the stream
+        if (_stream.flush) {
+          _stream.flush();
+        }
+        // move to origin
+        _stream = _stream.origin;
+      }
     }
 
     return {
