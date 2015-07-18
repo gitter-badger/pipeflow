@@ -9,6 +9,7 @@ To clone Pipeflow from this repository to your computer use following instructio
 $ mkdir pipeflow
 $ cd pipeflow
 $ git clone https://github.com/Pipeflow/pipeflow
+$ cd pipeflow
 $ npm install
 ```
 or if you already cloned the repository just run following command to install required packages using node.js package manager.
