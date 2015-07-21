@@ -44,7 +44,7 @@ describe('Pipeflow test', function () {
     it('should pump the stream to next middleware', function () {
       // arrange
       var stream = Stream.define('hello');
-      
+
       var app = Pipeflow();
       var spy = chai.spy();
 
@@ -61,22 +61,43 @@ describe('Pipeflow test', function () {
 
   });
 
-  describe('stream', function () {
+  describe('use', function () {
 
-    it('should define a brand new stream and instantiate it', function () {
+    it('should call the factory method', function () {
+      // arrange
+      var plugin = chai.spy();
+
+      var app = Pipeflow();
+
+      // act
+      app.use(plugin);
+
+      // assert
+      expect(plugin).to.have.been.called.with(app);
+    });
+
+  });
+
+});
+
+describe('Stream test', function () {
+
+  describe('new', function () {
+
+    it('should instantiate stream by its name', function () {
       // arrange
       var stream = Stream.define('hello');
       stream.read = function () {
         return 'hello world!';
       };
-      
+
       // act
       var stream = Stream.new('hello');
-      
+
       // assert
       expect(stream.read()).to.equal('hello world!');
     });
 
-  });
+  })
 
 });

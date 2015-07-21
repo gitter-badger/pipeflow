@@ -13,7 +13,7 @@
       return streams[name] = Object.create(Stream);
     }
   };
-  
+
   // Scope
   var Scope = {
     // creates a new instance of scope
@@ -76,9 +76,15 @@
       Scope.new().init(first, stream).invoke();
     }
 
+    // uses a Pipeflow plugin
+    function use(factory) {
+      factory(this);
+    }
+
     return {
       pipe: pipe,
-      start: start
+      start: start,
+      use: use
     };
 
   }
