@@ -57,6 +57,7 @@ describe('Pipeflow test', function () {
 
       // assert
       expect(spy).to.have.been.called.with(stream);
+      expect(stream).to.not.have.property('origin');
     });
 
   });

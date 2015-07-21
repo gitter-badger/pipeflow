@@ -33,7 +33,9 @@
     // pumps supplied stream to next middleware
     pump: function (stream) {
       // get the next middleware
-      stream.origin = this.stream;
+      if (stream != this.stream) {
+        stream.origin = this.stream; 
+      }
       var next = this.middleware.next;
       if (next) {
         // create a new scope and invoke the next middleware
