@@ -73,7 +73,7 @@
         return;
       }
       // create a new scope and invoke the first middleware
-      Scope.new().init(first, stream).invoke();
+      Scope.new().init(first, stream || Stream).invoke();
     }
 
     // uses a Pipeflow plugin

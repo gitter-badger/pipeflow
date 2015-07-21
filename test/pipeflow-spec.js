@@ -38,7 +38,7 @@ describe('Pipeflow test', function () {
       app.start();
 
       // assert
-      expect(spy).to.have.been.called();
+      expect(spy).to.have.been.called.with(Stream);
     });
 
     it('should pump the stream to next middleware', function () {
