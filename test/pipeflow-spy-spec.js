@@ -51,7 +51,7 @@ describe('Pipeflow test plugin', function () {
       // assert
       function cb(streams) {
         expect(streams).to.have.length(1);
-        expect(streams).to.include(expected);n
+        expect(streams).to.include(expected);
         done();
       }
     });
