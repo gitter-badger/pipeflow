@@ -2,7 +2,7 @@
   "name": "Pipeflow",
   "version": "0.1.0",
   "description": "A lightweight pipeline library written for node and browsers.",
-  "main": "src/pipe.js",
+  "main": "index.js",
   "directories": {
     "test": "test"
   },
