@@ -102,3 +102,25 @@ describe('Stream test', function () {
   })
 
 });
+
+describe('String stream test', function () {
+  
+  describe('read', function () {
+    
+    it('should return the text', function (done) {
+      // arrange
+      var stream = Stream.new('string').init('hello world!');
+      
+      // act
+      stream.read(cb);
+      
+      // assert
+      function cb(err, text) {
+        expect(text).to.equal('hello world!');
+        done();
+      }
+    });
+    
+  });
+  
+});

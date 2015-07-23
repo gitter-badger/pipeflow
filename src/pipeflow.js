@@ -13,6 +13,18 @@
       return streams[name] = Object.create(Stream);
     }
   };
+  
+  // String stream
+  var StringStream = Stream.define('string');
+  // initializes a new instance of StringStream
+  StringStream.init = function (text) {
+    this.text = text;
+    return this;
+  };
+  // reads the text
+  StringStream.read = function (cb) {
+    cb(null, this.text);
+  };
 
   // Scope
   var Scope = {
