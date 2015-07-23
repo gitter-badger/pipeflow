@@ -6,6 +6,11 @@
 # Pipeflow
 Pipeflow is a lightweight and cross-platform pipeline library written in JavaScript.
 
+### Installing
+```
+$ npm install pipeflow
+```
+
 ### Cloning
 To clone Pipeflow from this repository to your computer use following instruction:
 ```
