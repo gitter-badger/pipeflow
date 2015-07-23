@@ -13,7 +13,7 @@ $ npm install pipeflow
 ```
 
 ### Cloning
-Also you can clone the source code to your computer and make some changes as follows
+Also you can clone the source code to your computer as follows
 ```
 $ git clone https://github.com/Pipeflow/pipeflow
 $ cd pipeflow
