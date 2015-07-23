@@ -1,3 +1,4 @@
+
 var Pipeflow = require('../src/pipeflow').Pipeflow,
     Stream = require('../src/pipeflow').Stream,
     chai = require('chai'),

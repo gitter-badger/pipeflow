@@ -1,3 +1,10 @@
+
+/*
+ *  pipeflow
+ *  (c) 2015 Mehdi Golchin <golchin@outlook.com>
+ *  MIT licensed
+ */
+
 ! function () {
 
   var streams = {};

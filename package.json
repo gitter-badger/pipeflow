@@ -1,6 +1,6 @@
 {
   "name": "pipeflow",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A lightweight pipeline library written for node and browsers.",
   "main": "index.js",
   "directories": {
@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pipeflow/Pipeflow.git"
+    "url": "https://github.com/Pipeflow/pipeflow.git"
   },
   "author": "Mehdi Golchin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Pipeflow/Pipeflow/issues"
+    "url": "https://github.com/Pipeflow/pipeflow/issues"
   },
   "homepage": "http://pipeflow.github.io"
 }
