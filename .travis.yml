@@ -1,7 +1,14 @@
 language: node_js
 node_js:
-  - "0.12"
-  - "0.11"
-  - "0.10"
-  - "iojs"
-  - "iojs-v1.0.4"
+- '0.12'
+- '0.11'
+- '0.10'
+- iojs
+- iojs-v1.0.4
+deploy:
+  provider: npm
+  email: golchin@outlook.com
+  api_key:
+    secure: iuKowq5+X+CJcRvJt1r40VPEHXSv6JNBRPgNrCszJsDQaE07KS576B8MZJ/z5IMVG14bvQ6DzdORtgp+4xJzNROnZiT6BJ/Jlq2LDPIjFfvrGBXhQxrOTSLLyLH3vw7kuMjZL4TAtv+Za/ZPNQ57iLJdPgEU5WyFem00P3Hc5+eXdb/ooSYaiHlnwDrKHrb7+IzRmabnM/bYzh+FgNA2aoNiKvMZfNTFm+Dbc7vyAPSCOMeVSDqpTlglLLCWhG97gymZBoRlYucAfQ/WCtpO2+JPDXaLYK6H8DxXnpgvVo5ge5BPcdoROdOQB6spQJf96FBfATgP7DFPQQWSL868Q0HlPMqdEULqN5rrlpUhk4y/7UcOJBfTCfdbnmjf1hwHti2/osSMrgK0qqiL+6uR/C5jaUjQ1qpMvBELgnFAaVMjOBtkhrUxx3Tpe9C/i6UXalgnNeesVDND6stoMfYkzooF8GWGDre1MQEsUSlgTODX/lcyhJVSNJAxBVZbs3WLN/PTKN6GWCq/fyqd90i8YmiKCwkD5Mn7MIa49VLyP/VWALNqFWMZvxni4wkdb9bXAEdB4ZNTXc1yJyBJsWyciL4c3UvyMjG5CGdnKUTlI29uMkefZBz1rxtwcRF+VfwKKwGuxbkbpF8DJoYZbaFs37kvzUy+WWW2nYVvc+qEoLY=
+  on:
+    repo: Pipeflow/pipeflow
