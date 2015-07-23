@@ -1,10 +1,10 @@
-**Note** Since Pipeflow is under development, it's not ready for production purpose yet.
+**Note** Pipeflow is not ready for production purpose yet.
 
 [![travis CI](https://travis-ci.org/Pipeflow/pipeflow.svg?branch=master)](https://travis-ci.org/Pipeflow/pipeflow)
 [![npm version](https://badge.fury.io/js/pipeflow.svg)](https://www.npmjs.com/package/pipeflow)
 
 # Pipeflow
-Pipeflow is a lightweight and cross-platform pipeline library written in JavaScript.
+Pipeflow is a lightweight and cross-platform pipeline library for JavaScript.
 
 ### Installing
 ```
@@ -14,13 +14,10 @@ $ npm install pipeflow
 ### Cloning
 To clone Pipeflow from this repository to your computer use following instruction:
 ```
-$ mkdir pipeflow
-$ cd pipeflow
 $ git clone https://github.com/Pipeflow/pipeflow
 $ cd pipeflow
-$ npm install
 ```
-or if you already cloned the repository just run following command to install required packages using node.js package manager.
+and then following command to install required packages using node.js package manager.
 ```
 $ npm install
 ```
