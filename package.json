@@ -17,12 +17,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Pipe-js/Pipe.git"
+    "url": "https://github.com/Pipeflow/Pipeflow.git"
   },
   "author": "Mehdi Golchin",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Pipe-js/Pipe/issues"
+    "url": "https://github.com/Pipeflow/Pipeflow/issues"
   },
-  "homepage": "https://github.com/Pipe-js/Pipe"
+  "homepage": "http://pipeflow.github.io"
 }
