@@ -7,23 +7,24 @@
 Pipeflow is a lightweight and cross-platform pipeline library for JavaScript.
 
 ### Installing
+If you are using node.js, use npm to install Pipeflow as follows
 ```
 $ npm install pipeflow
 ```
 
 ### Cloning
-To clone Pipeflow from this repository to your computer use following instruction:
+Also you can clone the source code to your computer and make some changes as follows
 ```
 $ git clone https://github.com/Pipeflow/pipeflow
 $ cd pipeflow
 ```
-and then following command to install required packages using node.js package manager.
+then following command to install required packages from npm
 ```
 $ npm install
 ```
 
 ### Testing
-Pipeflow unit tests is a good resource to learn how Pipeflow works. To run them use following command:
+Pipeflow unit tests is a good resource to learn how it works or reacts in different situations, To run them use following command
 ```
 $ npm test
 ```
