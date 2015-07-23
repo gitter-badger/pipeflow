@@ -1,5 +1,5 @@
 {
-  "name": "Pipeflow",
+  "name": "pipeflow",
   "version": "0.1.0",
   "description": "A lightweight pipeline library written for node and browsers.",
   "main": "index.js",
