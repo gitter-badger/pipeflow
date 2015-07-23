@@ -1,5 +1,8 @@
 **Note** Since Pipeflow is under development, it's not ready for production purpose yet.
 
+![travis-CI]
+(https://travis-ci.org/Pipeflow/pipeflow.svg?branch=master)
+
 # Pipeflow
 Pipeflow is a lightweight and cross-platform pipeline library written in JavaScript.
 
