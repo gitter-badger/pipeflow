@@ -1,6 +1,6 @@
 **Note** Pipeflow is not ready for production purpose yet.
 
-[![travis CI](https://travis-ci.org/Pipeflow/pipeflow.svg?branch=master)](https://travis-ci.org/Pipeflow/pipeflow)
+[![Build Status](https://travis-ci.org/pipeflow/pipeflow.svg?branch=master)](https://travis-ci.org/pipeflow/pipeflow)
 [![npm version](https://badge.fury.io/js/pipeflow.svg)](https://www.npmjs.com/package/pipeflow)
 
 # Pipeflow
