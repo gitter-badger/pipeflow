@@ -13,3 +13,4 @@ deploy:
   on:
     repo: Pipeflow/pipeflow
     tag: true
+    node: '0.12'
