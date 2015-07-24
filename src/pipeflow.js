@@ -47,20 +47,22 @@
     },
     // invokes the middleware
     invoke: function () {
-      this.middleware.call(this, this.stream);
-    },
-    // pumps supplied stream to next middleware
-    pump: function (stream) {
-      // get the next middleware
-      if (stream != this.stream) {
-        stream.origin = this.stream; 
+      // pumps supplied stream to the next middleware
+      var scope = this;
+      function next (stream) {
+        // chain the stream
+         if (stream != scope.stream) {
+          stream.origin = scope.stream; 
+        }
+        // get the next middleware
+        var next = scope.middleware.next;
+        if (next) {
+          // create a new scope and invoke the next middleware
+          Scope.new().init(next, stream).invoke();
+        }
+        return stream;
       }
-      var next = this.middleware.next;
-      if (next) {
-        // create a new scope and invoke the next middleware
-        Scope.new().init(next, stream).invoke();
-      }
-      return stream;
+      this.middleware.call(this, next, this.stream);
     }
   };
 

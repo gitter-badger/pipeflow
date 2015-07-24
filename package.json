@@ -1,6 +1,6 @@
 {
   "name": "pipeflow",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "A lightweight pipeline library written for node and browsers.",
   "main": "index.js",
   "directories": {
@@ -9,7 +9,6 @@
   "dependencies": {},
   "devDependencies": {
     "chai": "^3.0.0",
-    "chai-spies": "^0.6.0",
     "mocha": "^2.2.5"
   },
   "scripts": {

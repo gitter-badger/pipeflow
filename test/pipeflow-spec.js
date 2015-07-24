@@ -1,11 +1,11 @@
 
-var Pipeflow = require('../src/pipeflow').Pipeflow,
-    Stream = require('../src/pipeflow').Stream,
+var Pipeflow = require('../').Pipeflow,
+    Stream = require('../').Stream,
     chai = require('chai'),
-    expect = chai.expect,
-    spies = require('chai-spies');
+    sinon = require('sinon'),
+    expect = chai.expect;
 
-chai.use(spies);
+chai.use(require('sinon-chai'));
 
 describe('Pipeflow test', function () {
 
@@ -31,7 +31,7 @@ describe('Pipeflow test', function () {
     it('should invoke the first middleware', function () {
       // arrange
       var app = Pipeflow();
-      var spy = chai.spy();
+      var spy = sinon.spy();
 
       app.pipe(spy);
 
@@ -39,26 +39,25 @@ describe('Pipeflow test', function () {
       app.start();
 
       // assert
-      expect(spy).to.have.been.called.with(Stream);
+      expect(spy).to.have.been.calledWithMatch(sinon.match.func, Stream);
     });
 
-    it('should pump the stream to next middleware', function () {
+    it('should pump the stream to the next middleware', function () {
       // arrange
       var stream = Stream.define('hello');
 
       var app = Pipeflow();
-      var spy = chai.spy();
+      var spy = sinon.spy();
 
       app
-        .pipe(function (stream) { this.pump(stream); })
+        .pipe(function (next, stream) { next(stream); })
         .pipe(spy);
 
       // act
       app.start(stream);
 
       // assert
-      expect(spy).to.have.been.called.with(stream);
-      expect(stream).to.not.have.property('origin');
+      expect(spy).to.have.been.calledWithMatch(sinon.match.func, stream);
     });
 
   });
@@ -67,7 +66,7 @@ describe('Pipeflow test', function () {
 
     it('should call the factory method', function () {
       // arrange
-      var plugin = chai.spy();
+      var plugin = sinon.spy();
 
       var app = Pipeflow();
 
@@ -75,7 +74,7 @@ describe('Pipeflow test', function () {
       app.use(plugin);
 
       // assert
-      expect(plugin).to.have.been.called.with(app);
+      expect(plugin).to.have.been.calledWith(app);
     });
 
   });
