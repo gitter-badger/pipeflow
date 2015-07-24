@@ -12,5 +12,5 @@ deploy:
     secure: YxO2BZILr9tZQz/5H2hbkCV9RM2pGmasXmvNtH76mNNt3+2susj17nEIFf/5qo8w2LfmaeYgRcKs3AporhYUnW7F+ycwqrYiWbGU/TNfnmuU/c0Ce/7mN8zRjLA1r7E1NoHDVtar0v4QZC6okcnZjjeZvWJwSA1/1z0QkGG6B97QH0qwP7mNThIUHLbuXBkELZUAU2GnHNAZJO3Z3E+BMGuE1sshufbCVdW+hUtEEbmveLtIgGL40YKGKnwMPcgKI+QtEWiFHSgNQignDeKXOdcssnjigTu9mrcWZovXdWqba+/4PPq0KkpyIcIUuXHn+wVSDKIoi3NX27TRrMWxJxUbqvBE+5rvqEsDWjXzYwjoVmThIYPqy28Ba1WZYVO4D9aO2iNwbqHqCJaflBeTkLF0p0yrFKKxclI1uivFUBns1v2N2366EEBl/gfJTblT8P3Viyd4FXPqRoxafEfgS+fcu6RyP7iAlXeQx9mxpxuclR/2afYdgvWVbiSOhh1GCFSrrBeZWB6wl58hVQ5DpMkefrrsQnBExndeUmOCn03JYW7U+MQV3KRMnbrdW2OWEA37hbr5YElhWGZwbTzwvJHIahEYdJ72ufjkAC4kaXcwcX/qjQi4Zr5ajV98fXIHa6eUKokNQoZkfovSe4SGDKYBpIwfD9cOBL58tOnaVmo=
   on:
     repo: Pipeflow/pipeflow
-    tag: true
+    tags: true
     node: '0.12'
