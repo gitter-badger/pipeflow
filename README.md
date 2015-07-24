@@ -28,3 +28,6 @@ Pipeflow unit tests is a good resource to learn how it works or reacts in differ
 ```
 $ npm test
 ```
+
+### Plugins
+[Pipeflow Test Plugin](https://github.com/pipeflow/pipeflow-test)
