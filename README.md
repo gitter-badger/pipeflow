@@ -4,6 +4,8 @@
 [![npm version](https://badge.fury.io/js/pipeflow.svg)](https://www.npmjs.com/package/pipeflow)
 
 # Pipeflow
+
+[![Join the chat at https://gitter.im/pipeflow/pipeflow](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/pipeflow/pipeflow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 Pipeflow is a lightweight and cross-platform pipeline library for JavaScript.
 
 ### Installing
